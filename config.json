@@ -4,7 +4,7 @@
             "name": "RS41UDPSource",
             "parameters": {
                 "port": 4030,
-                "rs41mod_path": "/home/leocelente/cloned/RS/demod/mod/rs41mod"
+                "rs41mod_path": "/decoder/demod/mod/rs41mod"
             }
         },
         "parser": {
