@@ -5,6 +5,7 @@ from plugin_manager import Exporter
 from gps import GPS
 from threading import Thread
 from json import dumps
+from os import getenv
 
 
 class WebSocketExporter(Exporter):
@@ -37,7 +38,11 @@ class WebSocketExporter(Exporter):
                 self.CONNECTIONS.remove(websocket)
 
         async def main():
-            async with websockets.serve(register, "0.0.0.0", 7000):
+            if getenv("WEBSOCKET_PORT") is None:
+                PORT = 7000
+            else:
+                PORT = getenv("WEBSOCKET_PORT")
+            async with websockets.serve(register, "0.0.0.0", PORT):
                 self.broadcast_thread.start()
                 await asyncio.Future()  # run forever
         asyncio.run(main())

@@ -1,5 +1,7 @@
 from json import loads
+from dataclasses import dataclass
 
+@dataclass
 class Config():
     gps: dict
     pipeline: dict
@@ -10,7 +12,5 @@ class Config():
         with open(filename, 'r') as file:
             contents = file.read()
         json  = loads(contents)
-        config  = Config()
-        config.gps = json['gps']
-        config.pipeline = json['pipeline']
+        config  = Config(json['gps'], json['pipeline'])
         return config

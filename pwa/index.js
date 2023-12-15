@@ -104,6 +104,11 @@ let plotly_map_layout = {
 window.onload = async () => {
   Plotly.newPlot("polar_chart", plotly_polar_data, plotly_polar_layout);
   Plotly.newPlot("main_map", plotly_map_data, plotly_map_layout);
+  
+  const meta_res = await fetch("/api/metadata");
+  const meta = await meta_res.json();
+  const websocket_port = meta['WEBSOCKET_PORT'];
+  if (websocket_port === null) {websocket_port = 7000}
 
   const res = await fetch("/api/packets");
   const previous_packets = await res.json();
@@ -121,7 +126,7 @@ window.onload = async () => {
     update_dashboard(packet, is_last);
   });
 
-  socket = new WebSocket(`ws://${location.hostname}:7000`);
+  socket = new WebSocket(`ws://${location.hostname}:${websocket_port}`);
   socket.onmessage = (message) => {
     packet = JSON.parse(message.data);
     update_dashboard(packet);

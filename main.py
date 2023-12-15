@@ -35,6 +35,11 @@ def get_gps():
     position: Position = gps.global_gps.current_position()
     return dumps(position.serializable())
 
+@app.route('/api/metadata')
+def get_metadata():
+    config = Config.from_file(getenv('CONFIG_FILE'))
+    return dumps({"name":getenv('NAME'), "WEBSOCKET_PORT": getenv("WEBSOCKET_PORT"),"gps": config.gps, "pipeline": config.pipeline})
+
 if __name__ == "__main__":
     config = Config.from_file(getenv('CONFIG_FILE'))
     gps.global_gps = gps.GPS_Factory(config).get_gps()
