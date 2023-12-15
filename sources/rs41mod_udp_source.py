@@ -3,7 +3,7 @@ from plugin_manager import Source
 from subprocess import Popen, PIPE, STDOUT, list2cmdline
 from shlex import shlex
 
-CMD_FULL = "nc -ul 4030 | rs41mod --json --IQ 0.0 - 48000 32"
+CMD_FULL = "nc -ul -p 4030 | rs41mod --json --IQ 0.0 - 48000 32"
 
 
 class RS41UDPSource(Source):

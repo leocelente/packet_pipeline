@@ -30,8 +30,7 @@ class RS41Parser(Parser):
                     print("no lock", parsed['sats'])
                     continue
 
-                print("RS41 Parser got a packet")
-            
+                
                 t = datetime.fromisoformat(parsed['datetime'].replace('Z', ''))
                 pos = Position(parsed['lat'], parsed['lon'], parsed['alt'], t)
                 arrival = datetime.utcnow()
