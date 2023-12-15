@@ -1,0 +1,31 @@
+version: '3'
+services:
+  tracker_rs41_4027:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - CONFIG_FILE=config.json
+    ports:
+      - 5001:5000/tcp
+      - 4027:4030/udp
+
+  tracker_rs41_4030:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - CONFIG_FILE=config.json
+    ports:
+      - 5002:5000/tcp
+      - 4030:4030/udp
+
+  tracker_rs41_4033:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - CONFIG_FILE=config.json
+    ports:
+      - 5003:5000/tcp
+      - 4033:4030/udp
