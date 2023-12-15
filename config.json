@@ -9,7 +9,9 @@
         },
         "parser": {
             "name": "RS41Parser",
-            "parameters": {}
+            "parameters": {
+                "require_gps_lock": true
+            }
         },
         "exporters": [
             {

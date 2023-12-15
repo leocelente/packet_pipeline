@@ -23,9 +23,10 @@ class RS41Parser(Parser):
                     continue
                 if not "datetime" in parsed:
                     continue
-                if not "sats" in parsed:
+                if not 'sats' in payload:
                     continue
-                if parsed['lat'] < 1e-6 and parsed['lon'] < 1e-6:
+
+                if self.parameters['require_gps_lock'] and payload['sats'] < 4:
                     continue
                 
                 t = datetime.fromisoformat(parsed['datetime'].replace('Z', ''))
