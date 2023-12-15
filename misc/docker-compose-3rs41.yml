@@ -6,9 +6,11 @@ services:
       dockerfile: Dockerfile
     environment:
       - CONFIG_FILE=config.json
+      - WEBSOCKET_PORT=7001
     ports:
       - 5001:5000/tcp
       - 4027:4030/udp
+      - 7001:7001/tcp
 
   tracker_rs41_4030:
     build:
@@ -16,9 +18,11 @@ services:
       dockerfile: Dockerfile
     environment:
       - CONFIG_FILE=config.json
+      - WEBSOCKET_PORT=7002
     ports:
       - 5002:5000/tcp
       - 4030:4030/udp
+      - 7002:7002/tcp
 
   tracker_rs41_4033:
     build:
@@ -26,6 +30,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - CONFIG_FILE=config.json
+      - WEBSOCKET_PORT=7003
     ports:
       - 5003:5000/tcp
       - 4033:4030/udp
+      - 7003:7003/tcp

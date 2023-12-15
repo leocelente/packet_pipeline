@@ -107,7 +107,7 @@ window.onload = async () => {
   
   const meta_res = await fetch("/api/metadata");
   const meta = await meta_res.json();
-  const websocket_port = meta['WEBSOCKET_PORT'];
+  let websocket_port = meta['WEBSOCKET_PORT'];
   if (websocket_port === null) {websocket_port = 7000}
 
   const res = await fetch("/api/packets");

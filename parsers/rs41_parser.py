@@ -23,12 +23,13 @@ class RS41Parser(Parser):
                     continue
                 if not "datetime" in parsed:
                     continue
-                if not 'sats' in payload:
+                if not 'sats' in parsed:
                     continue
 
-                if self.parameters['require_gps_lock'] and payload['sats'] < 4:
+                if self.parameters['require_gps_lock'] and parsed['sats'] < 4:
+                    print("no lock", parsed['sats'])
                     continue
-                
+            
                 t = datetime.fromisoformat(parsed['datetime'].replace('Z', ''))
                 pos = Position(parsed['lat'], parsed['lon'], parsed['alt'], t)
                 arrival = datetime.utcnow()
