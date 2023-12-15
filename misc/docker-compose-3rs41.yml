@@ -10,7 +10,7 @@ services:
     ports:
       - 5001:5000/tcp
       - 4027:4030/udp
-      - 7001:7001/tcp
+      - 7001:7001
 
   tracker_rs41_4030:
     build:
@@ -22,7 +22,7 @@ services:
     ports:
       - 5002:5000/tcp
       - 4030:4030/udp
-      - 7002:7002/tcp
+      - 7002:7002
 
   tracker_rs41_4033:
     build:
@@ -34,4 +34,4 @@ services:
     ports:
       - 5003:5000/tcp
       - 4033:4030/udp
-      - 7003:7003/tcp
+      - 7003:7003
