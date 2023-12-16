@@ -1,9 +1,9 @@
 from packet import Packet
 
 class RunningStats():
-    packets: list[Packet]
-    successes: dict[str, dict | int]
-    failures: dict[str, dict | int]
+    packets: list
+    successes: dict
+    failures: dict
     def __init__(self) -> None:
         self.packets = []
         self.failures = {'parse': 0, 'exporters': {}}
@@ -27,7 +27,7 @@ class RunningStats():
     def save_packet(self, packet: Packet):
         self.packets.append(packet)
 
-    def get_packets(self) -> list[Packet]:
+    def get_packets(self) -> list:
         return self.packets
     def get_stats(self):
         return {'success': self.successes, 'failures': self.failures}

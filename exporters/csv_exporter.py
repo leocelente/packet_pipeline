@@ -8,7 +8,7 @@ from gps import GPS
 class CSVExporter(Exporter):
     filename: str
 
-    def __init__(self, gps: GPS, params: dict[str, Any]) -> None:
+    def __init__(self, gps: GPS, params: dict) -> None:
         super().__init__(gps, params)
         now = datetime.utcnow()
         self.filename = f"data_{now.strftime('%Y-%m-%d-%H-%M-%S')}.csv"

@@ -6,7 +6,7 @@ from position import Position
 from typing import Any
 
 class FakeParser(Parser):
-    def __init__(self, push: Callable[[Packet], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
 
     def parser(self) -> None:

@@ -1,12 +1,10 @@
 from typing import Callable, Any
 from plugin_manager import Source
-from time import sleep
-from random import randbytes
 from serial import Serial
 
 class SerialSource(Source):
     port: Serial
-    def __init__(self, push: Callable[[bytes], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
         self.serial = Serial(self.parameters['port'], baudrate=self.parameters['baudrate'])
 

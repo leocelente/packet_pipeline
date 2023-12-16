@@ -17,7 +17,7 @@ class GPS(ABC):
 
 class GPS_Static(GPS):
     position: Position
-    def __init__(self, param: dict[str, Any]) -> None:
+    def __init__(self, param: dict) -> None:
         time = datetime.utcnow()
         self.position = Position(param["latitude"], param["longitude"], param["altitude"], time)
         super().__init__()
@@ -47,7 +47,7 @@ class GPS_GPSD(GPS):
                     self.current = pos
 
 
-    def __init__(self, param: dict[str, Any]) -> None:
+    def __init__(self, param: dict) -> None:
         super().__init__()
 
         time = datetime.utcnow()

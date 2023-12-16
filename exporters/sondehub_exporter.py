@@ -13,7 +13,7 @@ SOFTWARE_NAME = 'tccelente'
 SOFTWARE_VERSION = '0.0.1'
 
 class SondeHubExporter(Exporter):
-    to_send: list[dict]
+    to_send: list
 
     position_uploader_thread: Thread
     telemetry_uploader_thread: Thread
@@ -21,7 +21,7 @@ class SondeHubExporter(Exporter):
     location: Position
     last_location: Position
     
-    def __init__(self, gps: GPS, params: dict[str, Any]) -> None:
+    def __init__(self, gps: GPS, params: dict) -> None:
         super().__init__(gps, params)
         self.to_send = []
         self.last_location = Position.random()

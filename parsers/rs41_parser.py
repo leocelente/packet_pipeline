@@ -7,7 +7,7 @@ from typing import Any
 from json import loads
 
 class RS41Parser(Parser):
-    def __init__(self, push: Callable[[Packet], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
 
     def parser(self) -> None:

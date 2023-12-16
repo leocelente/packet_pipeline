@@ -7,10 +7,10 @@ CMD_FULL = "nc -ul -p 4030 | rs41mod --json --IQ 0.0 - 48000 32"
 
 
 class RS41UDPSource(Source):
-    netcat_process: Popen[bytes]
-    rs41mod_process: Popen[bytes]
+    netcat_process: Popen
+    rs41mod_process: Popen
 
-    def __init__(self, push: Callable[[bytes], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
 
         programs = CMD_FULL.split(' | ')

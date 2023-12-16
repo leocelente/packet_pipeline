@@ -1,15 +1,16 @@
 from typing import Callable, Any
 from plugin_manager import Source
 from time import sleep
-from random import randbytes
+from random import randint
 
 class FakeSource(Source):
-    def __init__(self, push: Callable[[bytes], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
 
     def listen(self) -> None:
         while not self.done:
-            data = randbytes(128)
+            
+            data = bytes([randint(0, 255) for _ in range(128)])
             self.push(data)
             sleep(6)
         return

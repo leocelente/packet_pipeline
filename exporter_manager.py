@@ -7,10 +7,10 @@ import running_stats
 from typing import Any
 
 class ExporterManager():
-    exporters: list[Exporter] 
-    threads: list[Thread]
+    exporters: list 
+    threads: list
     
-    def __init__(self, exporters: list[tuple[Any, dict[str, Any]]]) -> None:
+    def __init__(self, exporters: list) -> None:
         self.exporters = []
         self.threads = []
         for (classname, params)  in exporters:

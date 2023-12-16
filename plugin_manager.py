@@ -16,9 +16,9 @@ class SourceFailure(Exception):
 
 class Source(ABC):
     done: bool
-    push: Callable[[bytes], None]
-    parameters: dict[str, Any]
-    def __init__(self, push: Callable[[bytes], None], parameters: dict[str, Any]) -> None:
+    push: Callable
+    parameters: dict
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__()
         self.done = False 
         self.push = push 
@@ -45,10 +45,10 @@ class ParsingFailure(Exception):
 
 class Parser(ABC):
   done: bool
-  queue: Queue[bytes]
-  push: Callable[[Packet], None]
-  parameters: dict[str, Any]
-  def __init__(self, push: Callable[[Packet], None], parameters: dict[str, Any]) -> None:
+  queue: Queue
+  push: Callable
+  parameters: dict
+  def __init__(self, push: Callable, parameters: dict) -> None:
       self.done = False
       self.queue = Queue(16)
       self.push = push 
@@ -73,9 +73,9 @@ class ExportFailure(Exception):
 class Exporter(ABC):
   done: bool
   gps: gps_module.GPS
-  queue: Queue[Packet]
-  parameters: dict[str, Any]
-  def __init__(self, gps: gps_module.GPS, params: dict[str, Any]) -> None:
+  queue: Queue
+  parameters: dict
+  def __init__(self, gps: gps_module.GPS, params: dict) -> None:
       self.done = False
       self.gps = gps
       self.queue = Queue(32)

@@ -7,7 +7,7 @@ from threading import Thread
 
 class PipeLine():
     source: Source
-    data_queue: Queue[bytes]
+    data_queue: Queue
     parser: Parser
     export_manager: ExporterManager
     plugin_manager: PluginManager

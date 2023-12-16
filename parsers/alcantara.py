@@ -8,7 +8,7 @@ import pytz
 class AlcantaraParser(Parser):
     sample = "85;64;-22.273373;-45.692879;2440.97;\"10:57:10\""
     last_packet: Position
-    def __init__(self, push: Callable[[Packet], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         self.last_packet = Position.random()
         super().__init__(push, parameters)
 

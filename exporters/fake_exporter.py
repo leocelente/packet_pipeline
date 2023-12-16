@@ -3,7 +3,7 @@ from plugin_manager import Exporter
 from gps import GPS
 
 class FakeExporter(Exporter):
-    def __init__(self, gps: GPS, params: dict[str, Any]) -> None:
+    def __init__(self, gps: GPS, params: dict) -> None:
         super().__init__(gps, params)
 
     def exporter(self) -> None:

@@ -24,7 +24,7 @@ class WebSocketExporter(Exporter):
             packet_s = dumps(packet.serializable(receiver))
             websockets.broadcast(self.CONNECTIONS, packet_s)
 
-    def __init__(self, gps: GPS, params: dict[str, Any]) -> None:
+    def __init__(self, gps: GPS, params: dict) -> None:
         super().__init__(gps, params)
         self.CONNECTIONS = set()
         self.broadcast_thread = Thread(target=self.loop, args=(), daemon=True)

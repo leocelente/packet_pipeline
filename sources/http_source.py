@@ -18,7 +18,7 @@ def ServerFactory(push: Callable):
 
 class HttpSource(Source):
     webServer: HTTPServer
-    def __init__(self, push: Callable[[bytes], None], parameters: dict[str, Any]) -> None:
+    def __init__(self, push: Callable, parameters: dict) -> None:
         super().__init__(push, parameters)
         self.webServer = HTTPServer(("0.0.0.0", 4567), ServerFactory(push))
 
