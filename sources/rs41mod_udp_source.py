@@ -31,6 +31,7 @@ class RS41UDPSource(Source):
 
     def listen(self) -> None:
         for line in iter(self.rs41mod_process.stdout.readline, b''):
+            print("Decoding RS41 packets")
             self.push(line)
         return
 

@@ -25,6 +25,7 @@ class SondeHubExporter(Exporter):
         super().__init__(gps, params)
         self.to_send = []
         self.last_location = Position.random()
+        self.location = Position.random()
         self.position_uploader_thread = Thread(
             target=self.position_uploader_worker, args=(), daemon=True)
         self.telemetry_uploader_thread = Thread(
@@ -119,7 +120,7 @@ class SondeHubExporter(Exporter):
             }
 
             payload['serial'] = payload.pop('id')
-            payload = metadata | payload
+            payload = {**metadata,  **payload}
     
             self.to_send.append(payload)
         return

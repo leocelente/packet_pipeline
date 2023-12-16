@@ -4,8 +4,10 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    network_mode: host
     environment:
-      - CONFIG_FILE=config.json
+      - PORT=5001
+      - CONFIG_FILE=config.4027.json
       - WEBSOCKET_PORT=7001
     ports:
       - 5001:5000/tcp
@@ -16,8 +18,10 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    network_mode: host
     environment:
-      - CONFIG_FILE=config.json
+      - PORT=5002
+      - CONFIG_FILE=config.4030.json
       - WEBSOCKET_PORT=7002
     ports:
       - 5002:5000/tcp
@@ -29,9 +33,11 @@ services:
       context: ..
       dockerfile: Dockerfile
     environment:
-      - CONFIG_FILE=config.json
+      - PORT=5003
+      - CONFIG_FILE=config.4033.json
       - WEBSOCKET_PORT=7003
+    network_mode: host
     ports:
-      - 5003:5000/tcp
-      - 4033:4030/udp
-      - 7003:7003/tcp
+      - 5003:5000
+      - 4033:4030
+      - 7003:7003

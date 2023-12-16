@@ -1,0 +1,43 @@
+{
+    "pipeline": {
+        "source": {
+            "name": "RS41UDPSource",
+            "parameters": {
+                "port": 4027,
+                "rs41mod_path": "/decoder/demod/mod/rs41mod"
+            }
+        },
+        "parser": {
+            "name": "RS41Parser",
+            "parameters": {
+                "require_gps_lock": true
+            }
+        },
+        "exporters": [
+            {
+                "name": "WebSocketExporter",
+                "parameters": {}
+            },
+            {
+                "name": "SondeHubExporter",
+                "parameters": {
+                    "callsign": "OBSAT_MOBILE",
+                    "packets_per_transfer": 15,
+                    "mobile": false,
+                    "antenna": "1/4 monopole",
+                    "email": "leocelente@usp.br",
+                    "station_upload_interval": 10,
+                    "telemetry_upload_interval": 15
+                }
+            }
+        ]
+    },
+    "gps": {
+        "type": "static",
+        "parameters": {
+            "latitude": -21.7,
+            "longitude": -48,
+            "altitude": 850
+        }
+    }
+}
